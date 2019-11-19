@@ -12,6 +12,7 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
+import 'package:mobile/EventScreen.dart';
 
 void main() => runApp(EventilApp());
 
@@ -20,7 +21,9 @@ class EventilApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Eventil',
-      theme: ThemeData(primarySwatch: Colors.blueGrey),
+      theme: ThemeData(
+        primaryColor: Color(0xFF333a47),
+      ),
       home: MyHomePage(title: 'Browse Events'),
     );
   }
@@ -40,13 +43,48 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.title)),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('Loading...'),
-          ],
-        ),
+      body: ListView(
+        children: <Widget>[
+          Card(
+            child: InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => EventScreen()));
+              },
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(
+                          'https://cdn.eventil.com/uploads/event/header_image/313825/processed_Facebook_tlo.jpg',
+                        ),
+                      ),
+                    ),
+                    height: 140,
+                  ),
+                  ListTile(
+                    title: Text("Flutter Europe"),
+                    subtitle: Text("This is some description"),
+                    trailing: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 4.0,
+                        vertical: 2.0,
+                      ),
+                      color: Colors.blue[100],
+                      child: Text(
+                        "Conference",
+                        style: TextStyle(color: Colors.blue[800]),
+                      ),
+                    ),
+                    isThreeLine: true,
+                  ),
+                ],
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
