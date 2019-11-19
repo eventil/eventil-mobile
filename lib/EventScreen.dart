@@ -67,28 +67,24 @@ class EventScreen extends StatelessWidget {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 0,
-        backgroundColor: Color(0xFF333a47),
+        backgroundColor: Theme.of(context).primaryColor,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.grey[400],
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
               Icons.calendar_today,
-              color: Colors.white,
             ),
             title: Text(
               "Overview",
-              style: TextStyle(
-                color: Colors.white,
-              ),
             ),
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.calendar_today,
-              color: Colors.white,
             ),
             title: Text(
               "Agenda",
-              style: TextStyle(color: Colors.white),
             ),
           ),
         ],
